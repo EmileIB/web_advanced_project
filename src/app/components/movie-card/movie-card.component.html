@@ -1,0 +1,58 @@
+<div class="card text-white bg-dark" *ngIf="movie !== undefined">
+  <img src="{{ movie.poster }}" class="card-img-top" alt="..." />
+  <div class="card-img-overlay">
+    <div class="dropdown">
+      <button
+        class="btn btn-dark setting-btn shadow-none"
+        type="button"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+          <button class="dropdown-item" (click)="onEditClick()">Edit</button>
+        </li>
+        <li>
+          <button class="dropdown-item">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title no-overflow">
+      <span>{{ movie.title }}</span>
+    </h4>
+    <p class="card-text">
+      <strong>Year:</strong> {{ movie.year }} <br />
+      <strong>Genre:</strong> {{ movie.genre }} <br />
+      <strong>Director:</strong> {{ movie.director }} <br />
+    </p>
+  </div>
+</div>
+
+<div class="card text-white bg-dark" *ngIf="movie === undefined">
+  <img
+    src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png"
+    class="card-img-top"
+    alt="..."
+  />
+  <div class="card-body">
+    <h4 class="card-title no-overflow">
+      <span>Not Found</span>
+    </h4>
+    <p class="card-text">
+      <strong>Year: N/A</strong> <br />
+      <strong>Genre: N/A</strong> <br />
+      <strong>Director: N/A</strong> <br />
+    </p>
+  </div>
+</div>
+
+<app-add-edit-movie
+  *ngIf="isAddEditModalOpen"
+  [movie]="movie"
+  (onCloseModalTrigger)="onCloseModal()"
+></app-add-edit-movie>
