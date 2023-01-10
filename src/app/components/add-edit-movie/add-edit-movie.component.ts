@@ -10,10 +10,29 @@ import { Movie } from 'src/app/models/movie';
 export class AddEditMovieComponent implements OnInit {
   @Input() movie: Movie | undefined;
 
-  @Output() onCloseModalTrigger = new EventEmitter();
+  @Output() onEditMovieTrigger = new EventEmitter<Movie>();
+  @Output() onAddMovieTrigger = new EventEmitter<Movie>();
 
-  closeModal(): void {
-    this.onCloseModalTrigger.emit();
+  onEdit(): void {
+    this.onEditMovieTrigger.emit({
+      id: 1,
+      title: '123',
+      year: 1,
+      genre: '123',
+      director: '123',
+      poster: '123',
+    });
+  }
+
+  onAdd(): void {
+    this.onAddMovieTrigger.emit({
+      id: 1,
+      title: '123',
+      year: 1,
+      genre: '123',
+      director: '123',
+      poster: '123',
+    });
   }
 
   constructor() {}

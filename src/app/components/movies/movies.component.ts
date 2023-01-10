@@ -65,7 +65,19 @@ export class MoviesComponent implements OnInit {
     },
   ];
 
+  selectedMovie: Movie | undefined;
+
   constructor() {}
+
+  setSelectedMovie(movie: Movie): void {
+    this.selectedMovie = movie;
+    console.log(this.selectedMovie);
+  }
+
+  onEdit(newMovie: Movie): void {
+    console.log(newMovie);
+    $('#addEditMovieModal').modal('hide');
+  }
 
   ngOnInit(): void {}
 }

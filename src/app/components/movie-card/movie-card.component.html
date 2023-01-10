@@ -11,9 +11,19 @@
       >
         <i class="bi bi-gear-fill"></i>
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <ul
+        class="dropdown-menu dropdown-menu-dark"
+        aria-labelledby="dropdownMenuButton1"
+      >
         <li>
-          <button class="dropdown-item" (click)="onEditClick()">Edit</button>
+          <button
+            class="dropdown-item"
+            data-bs-toggle="modal"
+            data-bs-target="#addEditMovieModal"
+            (click)="setSelectedMovie()"
+          >
+            Edit
+          </button>
         </li>
         <li>
           <button class="dropdown-item">Delete</button>
@@ -50,9 +60,3 @@
     </p>
   </div>
 </div>
-
-<app-add-edit-movie
-  *ngIf="isAddEditModalOpen"
-  [movie]="movie"
-  (onCloseModalTrigger)="onCloseModal()"
-></app-add-edit-movie>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Movie } from 'src/app/models/movie';
 
 @Component({
@@ -9,18 +9,13 @@ import { Movie } from 'src/app/models/movie';
 export class MovieCardComponent implements OnInit {
   @Input() movie: Movie | undefined;
 
-  isAddEditModalOpen = false;
+  @Output() onSetSelectedMovie = new EventEmitter<Movie>();
+
+  setSelectedMovie(): void {
+    this.onSetSelectedMovie.emit(this.movie);
+  }
 
   constructor() {}
-
-  onEditClick(): void {
-    this.isAddEditModalOpen = true;
-  }
-
-  onCloseModal(): void {
-    console.log('onCloseModal()');
-    this.isAddEditModalOpen = false;
-  }
 
   ngOnInit(): void {}
 }
