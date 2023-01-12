@@ -14,16 +14,14 @@ export class DataService {
     return this.http.get<Response>(this.baseUrl + 'movies/index.php');
   }
 
-  getMovieById(id: number) {
-    return this.http.get<Response>(this.baseUrl + 'movies/index.php?id=' + id);
-  }
-
   editMovie(movie: Movie) {
     return this.http.put<Response>(this.baseUrl + 'movies/edit.php', movie);
   }
 
   deleteMovie(id: number) {
-    return this.http.delete<Response>(this.baseUrl + 'movies/delete/' + id);
+    return this.http.delete<Response>(
+      this.baseUrl + 'movies/delete.php?id=' + id
+    );
   }
 
   addMovie(movie: Movie) {

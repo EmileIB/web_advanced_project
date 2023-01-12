@@ -7,6 +7,7 @@
       <app-movie-card
         [movie]="movie"
         (onSetSelectedMovie)="setSelectedMovie($event)"
+        (onDeleteMovie)="deleteMovie($event)"
       ></app-movie-card>
     </div>
   </div>
@@ -15,4 +16,22 @@
 <app-add-edit-movie
   [movie]="selectedMovie"
   (onEditMovieTrigger)="onEdit($event)"
+  (onAddMovieTrigger)="onAdd($event)"
 ></app-add-edit-movie>
+
+<button
+  class="btn btn-success"
+  type="submit"
+  data-bs-toggle="modal"
+  data-bs-target="#addEditMovieModal"
+  style="
+    position: fixed;
+    bottom: 20px;
+    right: 35px;
+    z-index: 1000;
+    font-size: large;
+  "
+  (click)="setSelectedMovie()"
+>
+  <i class="bi bi-plus"></i> Add Movie
+</button>

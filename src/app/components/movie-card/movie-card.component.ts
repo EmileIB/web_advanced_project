@@ -10,9 +10,14 @@ export class MovieCardComponent implements OnInit {
   @Input() movie: Movie | undefined;
 
   @Output() onSetSelectedMovie = new EventEmitter<Movie>();
+  @Output() onDeleteMovie = new EventEmitter<Movie>();
 
   setSelectedMovie(): void {
     this.onSetSelectedMovie.emit(this.movie);
+  }
+
+  onDelete(): void {
+    this.onDeleteMovie.emit(this.movie);
   }
 
   constructor() {}

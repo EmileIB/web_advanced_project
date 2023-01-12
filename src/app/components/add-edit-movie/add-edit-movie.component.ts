@@ -14,25 +14,22 @@ export class AddEditMovieComponent implements OnInit {
   @Output() onAddMovieTrigger = new EventEmitter<Movie>();
 
   onEdit(): void {
-    this.onEditMovieTrigger.emit({
+    this.onEditMovieTrigger.emit(this.getMovieObject());
+  }
+
+  onAdd(): void {
+    this.onAddMovieTrigger.emit(this.getMovieObject());
+  }
+
+  getMovieObject(): Movie {
+    return {
       id: $('#id').val() as number,
       title: $('#title').val() as string,
       year: $('#year').val() as number,
       genre: $('#genre option:selected').val() as string,
       director: $('#director').val() as string,
       poster: $('#poster').val() as string,
-    });
-  }
-
-  onAdd(): void {
-    this.onAddMovieTrigger.emit({
-      id: 1,
-      title: '123',
-      year: 1,
-      genre: '123',
-      director: '123',
-      poster: '123',
-    });
+    };
   }
 
   constructor() {}

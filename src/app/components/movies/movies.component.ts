@@ -15,22 +15,44 @@ export class MoviesComponent implements OnInit {
 
   constructor(private data: DataService) {}
 
-  setSelectedMovie(movie: Movie): void {
+  setSelectedMovie(movie: Movie | undefined = undefined): void {
     this.selectedMovie = movie;
-    console.log(this.selectedMovie);
   }
 
   onEdit(newMovie: Movie): void {
+    console.log(newMovie);
     this.data.editMovie(newMovie).subscribe((response) => {
       if (response.success) {
         this.movies = this.movies.map((movie) => {
-          if (movie.id === newMovie.id) {
+          console.log(movie.id, newMovie.id);
+          if (movie.id == newMovie.id) {
             return newMovie;
           } else {
             return movie;
           }
         });
         $('#addEditMovieModal').modal('hide');
+      } else {
+        alert(response.message);
+      }
+    });
+  }
+
+  onAdd(newMovie: Movie): void {
+    this.data.addMovie(newMovie).subscribe((response) => {
+      if (response.success) {
+        this.movies.push(response.data);
+        $('#addEditMovieModal').modal('hide');
+      } else {
+        alert(response.message);
+      }
+    });
+  }
+
+  deleteMovie(movie: Movie): void {
+    this.data.deleteMovie(movie.id).subscribe((response) => {
+      if (response.success) {
+        this.movies = this.movies.filter((m) => m.id != movie.id);
       } else {
         alert(response.message);
       }
