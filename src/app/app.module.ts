@@ -8,6 +8,7 @@ import { AddEditMovieComponent } from './components/add-edit-movie/add-edit-movi
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { HomeComponent } from './components/home/home.component';
 import { MoviesComponent } from './components/movies/movies.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { MoviesComponent } from './components/movies/movies.component';
     HomeComponent,
     MoviesComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

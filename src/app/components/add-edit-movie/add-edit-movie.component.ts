@@ -15,12 +15,12 @@ export class AddEditMovieComponent implements OnInit {
 
   onEdit(): void {
     this.onEditMovieTrigger.emit({
-      id: 1,
-      title: '123',
-      year: 1,
-      genre: '123',
-      director: '123',
-      poster: '123',
+      id: $('#id').val() as number,
+      title: $('#title').val() as string,
+      year: $('#year').val() as number,
+      genre: $('#genre option:selected').val() as string,
+      director: $('#director').val() as string,
+      poster: $('#poster').val() as string,
     });
   }
 

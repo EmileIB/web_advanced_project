@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/data.service';
 
 import { Movie } from 'src/app/models/movie';
 
@@ -8,66 +9,11 @@ import { Movie } from 'src/app/models/movie';
   styleUrls: ['./movies.component.css'],
 })
 export class MoviesComponent implements OnInit {
-  movies: Movie[] = [
-    {
-      id: 1,
-      title: 'The Shawshank Redemption',
-      year: 1994,
-      genre: 'Drama',
-      director: 'Frank Darabont',
-      poster:
-        'https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg',
-    },
-    {
-      id: 1,
-      title: 'The Shawshank Redemption',
-      year: 1994,
-      genre: 'Drama',
-      director: 'Frank Darabont',
-      poster:
-        'https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg',
-    },
-    {
-      id: 1,
-      title: 'The Shawshank Redemption',
-      year: 1994,
-      genre: 'Drama',
-      director: 'Frank Darabont',
-      poster:
-        'https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg',
-    },
-    {
-      id: 1,
-      title: 'The Shawshank Redemption',
-      year: 1994,
-      genre: 'Drama',
-      director: 'Frank Darabont',
-      poster:
-        'https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg',
-    },
-    {
-      id: 1,
-      title: 'The Shawshank Redemption',
-      year: 1994,
-      genre: 'Drama',
-      director: 'Frank Darabont',
-      poster:
-        'https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg',
-    },
-    {
-      id: 1,
-      title: 'The Shawshank Redemption',
-      year: 1994,
-      genre: 'Drama',
-      director: 'Frank Darabont',
-      poster:
-        'https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg',
-    },
-  ];
+  movies: Movie[] = [];
 
   selectedMovie: Movie | undefined;
 
-  constructor() {}
+  constructor(private data: DataService) {}
 
   setSelectedMovie(movie: Movie): void {
     this.selectedMovie = movie;
@@ -75,9 +21,29 @@ export class MoviesComponent implements OnInit {
   }
 
   onEdit(newMovie: Movie): void {
-    console.log(newMovie);
-    $('#addEditMovieModal').modal('hide');
+    this.data.editMovie(newMovie).subscribe((response) => {
+      if (response.success) {
+        this.movies = this.movies.map((movie) => {
+          if (movie.id === newMovie.id) {
+            return newMovie;
+          } else {
+            return movie;
+          }
+        });
+        $('#addEditMovieModal').modal('hide');
+      } else {
+        alert(response.message);
+      }
+    });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.data.getMovies().subscribe((response) => {
+      if (response.success) {
+        this.movies = response.data;
+      } else {
+        alert(response.data);
+      }
+    });
+  }
 }

@@ -19,6 +19,7 @@
       <div class="modal-body">
         <form>
           <div class="mb-2">
+            <input type="hidden" id="id" [value]="movie?.id" />
             <label for="title" class="form-label">Title</label>
             <input
               type="text"
@@ -43,6 +44,7 @@
             <select
               class="form-select bg-dark text-white"
               aria-label="Genre Select"
+              id="genre"
             >
               <option [selected]="movie">Select Genre</option>
               <option [selected]="movie?.genre === 'Action'">Action</option>
