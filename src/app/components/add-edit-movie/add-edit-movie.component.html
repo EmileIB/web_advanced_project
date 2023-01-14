@@ -8,7 +8,10 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-dark text-white">
       <div class="modal-header">
-        <h3 class="modal-title" id="addEditMovieModalLabel">Edit Movie</h3>
+        <h3 class="modal-title" id="addEditMovieModalLabel">
+          <span *ngIf="movie">Edit Movie</span>
+          <span *ngIf="!movie">Add a new movie</span>
+        </h3>
         <button
           type="button"
           class="btn-close btn-close-white"
