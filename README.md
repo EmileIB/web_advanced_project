@@ -1,27 +1,24 @@
 # WebAdvancedProject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
+Name: Emile Ibrahim
+
+ID: 62010008
+
+Course: CSCI426 - Fall 2023
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Clone the project in your desired directory: `git clone https://github.com/EmileIB/web_advanced_project.git`.
 
-## Code scaffolding
+Run the command `npm i` to install the project's dependencies.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+I have added my API folder insode my project. Copy and paste it paste it inside `htdocs/meMovies` folder. (either create the folder `meMovies` inside `htdocs` and paste it inside of it, or just change the `baseUrl` inside `src\app\data.service.ts` to your prefered path)
 
-## Build
+You can find the SQL file for you to export in PhpMyAdmin inside the API folder `api/me_movies.sql` 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm start` for a dev server, then navigate to `http://localhost:4200/`.
 
-## Running unit tests
+## Project Details
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This project is a basic CRUD application created with angular/php. The user can add movies, see a list of all his added movies, as well as deleting or updating them. User can also filter movies by selecting a genre from the navigation bar.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
