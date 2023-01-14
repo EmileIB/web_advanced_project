@@ -14,7 +14,7 @@ Run the command `npm i` to install the project's dependencies.
 
 I have added my API folder insode my project. Copy and paste it paste it inside `htdocs/meMovies` folder.
 <br />
-**Note:** either create the folder `meMovies` inside `htdocs` and paste it inside of it, or just change the `baseUrl` inside `src\app\data.service.ts` to your prefered path)
+**Note:** either create the folder `meMovies` inside `htdocs` and paste the API folder inside of it, or just change the `baseUrl` inside `src\app\data.service.ts` to your prefered path
 
 You can find the SQL file for you to export in PhpMyAdmin inside the API folder `api/me_movies.sql` 
 
