@@ -34,10 +34,38 @@
             class="dropdown-menu dropdown-menu-dark"
             aria-labelledby="navbarDropdown"
           >
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Comedy</a></li>
-            <li><a class="dropdown-item" href="#">Drama</a></li>
-            <li><a class="dropdown-item" href="#">Horror</a></li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/movies"
+                [queryParams]="{ genre: 'action' }"
+                >Action</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/movies"
+                [queryParams]="{ genre: 'comedy' }"
+                >Comedy</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/movies"
+                [queryParams]="{ genre: 'drama' }"
+                >Drama</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/movies"
+                [queryParams]="{ genre: 'horror' }"
+                >Horror</a
+              >
+            </li>
           </ul>
         </li>
       </ul>

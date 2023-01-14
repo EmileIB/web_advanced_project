@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'movies',
     component: MoviesComponent,
   },
+  {
+    path: 'movies?genre=:genre',
+    component: MoviesComponent,
+  }
 ];
 
 @NgModule({

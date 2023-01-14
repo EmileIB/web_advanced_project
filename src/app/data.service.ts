@@ -10,8 +10,8 @@ export class DataService {
   baseUrl: string = 'http://localhost/meMovies/api/';
   constructor(private http: HttpClient) {}
 
-  getMovies() {
-    return this.http.get<Response>(this.baseUrl + 'movies/index.php');
+  getMovies(genre: string = '') {
+    return this.http.get<Response>(this.baseUrl + 'movies/index.php?genre=' + genre);
   }
 
   editMovie(movie: Movie) {

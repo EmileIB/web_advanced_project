@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
+import { ActivatedRoute } from '@angular/router';
 
 import { Movie } from 'src/app/models/movie';
 
@@ -10,10 +11,11 @@ import { Movie } from 'src/app/models/movie';
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
+  genre: string = '';
 
   selectedMovie: Movie | undefined;
 
-  constructor(private data: DataService) {}
+  constructor(private data: DataService, private route: ActivatedRoute) {}
 
   setSelectedMovie(movie: Movie | undefined = undefined): void {
     this.selectedMovie = movie;
@@ -60,12 +62,15 @@ export class MoviesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data.getMovies().subscribe((response) => {
-      if (response.success) {
-        this.movies = response.data;
-      } else {
-        alert(response.data);
-      }
+    this.route.queryParams.subscribe((params) => {
+      this.genre = params['genre'];
+      this.data.getMovies(params['genre']).subscribe((response) => {
+        if (response.success) {
+          this.movies = response.data;
+        } else {
+          alert(response.data);
+        }
+      });
     });
   }
 }
