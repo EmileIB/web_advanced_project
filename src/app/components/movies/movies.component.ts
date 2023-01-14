@@ -22,11 +22,9 @@ export class MoviesComponent implements OnInit {
   }
 
   onEdit(newMovie: Movie): void {
-    console.log(newMovie);
     this.data.editMovie(newMovie).subscribe((response) => {
       if (response.success) {
         this.movies = this.movies.map((movie) => {
-          console.log(movie.id, newMovie.id);
           if (movie.id == newMovie.id) {
             return newMovie;
           } else {
